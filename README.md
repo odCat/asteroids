@@ -10,16 +10,16 @@ Python 3.10+
 ## Quick start
 
 First, create a virtual environment:
-`python -m venv venv`
+```python -m venv venv```
 
 Activate the virtual environment:
-`source venv/bin/activate`
+```source venv/bin/activate```
 
 Install the requirements
-`pip install -r requirements.txt`
+```pip install -r requirements.txt```
 
 Run the game:
-`python main.py`
+```python main.py```
 
 ## Contributing
 
