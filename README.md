@@ -32,6 +32,11 @@ python main.py
 ## Screenshot
 ![image](https://github.com/user-attachments/assets/2bebe92f-7bab-4aa7-891f-cedf5729a9ad)
 
+## TODO
+- [ ] Add edges so objects come back into view when leaving the screen
+- [ ] Make the bullet look like a line
+- [ ] Add lifes
+
 ## Contributing
 
 If you want more features please contact me. Or if you want
