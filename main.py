@@ -43,9 +43,12 @@ def main():
                 exit("Game Over!")
             for bullet in shots:
                 if bullet.collided(asteroid):
+                    if asteroid.radius > ASTEROID_MIN_RADIUS:
+                        field.asteroids_no += 1
+                    else:
+                        field.asteroids_no -= 1
                     asteroid.split()
                     bullet.kill()
-
 
         for thing in drawable:
             thing.draw(screen)
