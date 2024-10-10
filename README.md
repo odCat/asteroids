@@ -19,7 +19,7 @@ Activate the virtual environment:
 source venv/bin/activate
 ```
 
-Install the requirements
+Install the requirements:
 ```bash
 pip install -r requirements.txt
 ```
