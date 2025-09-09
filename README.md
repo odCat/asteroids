@@ -1,7 +1,7 @@
 # Asteroids
 
-This is clone of the classic Asteroids game using Pygame and
-object-oriented programming concepts.
+This is clone of the classic Asteroids game build using the Pygame module
+and object-oriented programming concepts.
 
 ## Prerequisites
 
