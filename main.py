@@ -11,8 +11,8 @@ from shot import Shot
 def main():
     pygame.init()
     clock = pygame.time.Clock()
-    dt = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    dt = 0
 
     asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
