@@ -6,7 +6,7 @@ from constants import *
 
 
 class Player(CircleShape):
-    def __init__(self, screen, x, y):
+    def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
         self.rotation = 0
         self.shot_countdown = 0.0

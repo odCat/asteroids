@@ -25,7 +25,7 @@ def main():
     Shot.containers = (drawable, shots, updatable)
 
     field = AsteroidField()
-    player = Player(screen, SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
     while 1:
         for event in pygame.event.get():
