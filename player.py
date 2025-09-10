@@ -16,11 +16,11 @@ class Player(CircleShape):
 
     def triangle(self):
         forward_unit = pygame.Vector2(0, 1).rotate(self.rotation)
-        right_unit = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
-        a = self.position + forward_unit * self.radius
-        b = self.position - forward_unit * self.radius - right_unit
-        c = self.position - forward_unit * self.radius + right_unit
-        return [a, b, c]
+        lateral_unit = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
+        apex = self.position + forward_unit * self.radius
+        left_vertex = self.position - forward_unit * self.radius - lateral_unit
+        right_vertex = self.position - forward_unit * self.radius + lateral_unit
+        return [apex, left_vertex, right_vertex]
 
     def update(self, dt):
         self.shot_countdown -= dt
