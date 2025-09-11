@@ -6,8 +6,9 @@ from constants import *
 
 
 class Asteroid(CircleShape):
-    def __init__(self, x, y, radius):
+    def __init__(self, x, y, radius, velocity=0):
         super().__init__(x, y, radius)
+        self.velocity = velocity
 
     def draw(self, screen):
         pygame.draw.circle(screen, "white", self.position, self.radius, 2)
@@ -23,8 +24,8 @@ class Asteroid(CircleShape):
             angle = random.uniform(20, 50)
             new_radius = self.radius - ASTEROID_MIN_RADIUS
 
-            astro1 = Asteroid(self.position.x, self.position.y, new_radius)
-            astro1.velocity = self.velocity.rotate(-angle) * 1.2
+            velocity = self.velocity.rotate(-angle) * 1.2
+            astro1 = Asteroid(self.position.x, self.position.y, new_radius, velocity)
 
-            astro2 = Asteroid(self.position.x, self.position.y, new_radius)
-            astro2.velocity = self.velocity.rotate(angle) * 1.2
+            velocity = self.velocity.rotate(angle) * 1.2
+            astro2 = Asteroid(self.position.x, self.position.y, new_radius, velocity)
