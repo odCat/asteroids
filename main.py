@@ -37,10 +37,19 @@ def main():
         for thing in updatable:
             thing.update(dt)
 
+        if player.timeout >= 0:
+            player.timeout -= dt
+
         for asteroid in asteroids:
             if player.collided(asteroid):
-                pygame.quit()
-                exit("Game Over!")
+                if player.timeout < 0:
+                    if player.lives == 0:
+                        pygame.quit()
+                        exit("Game Over!")
+                    else:
+                        player.reset(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+                elif player.timeout >= 0 and player.timeout < 1:
+                    player.timeout += dt
             for bullet in shots:
                 if bullet.collided(asteroid):
                     asteroid.split(field)

@@ -8,7 +8,9 @@ from constants import *
 class Player(CircleShape):
     def __init__(self, x, y):
         super().__init__(x, y, PLAYER_RADIUS)
-        self.rotation = 0
+        self.timeout = PLAYER_TIMEOUT
+        self.lives = PLAYER_LIVES
+        self.rotation = PLAYER_INITIAL_ROTATION
         self.shot_countdown = 0.0
 
     def draw(self, screen):
@@ -26,6 +28,10 @@ class Player(CircleShape):
 
     def update(self, dt):
         self.shot_countdown -= dt
+
+        if self.timeout > 0:
+            return
+
         keys = pygame.key.get_pressed()
 
         if keys[pygame.K_w] or keys[pygame.K_UP]:
@@ -56,3 +62,12 @@ class Player(CircleShape):
 
         self.shot_countdown = PLAYER_SHOOT_COOLDOWN
 
+    def update_position(self, x, y):
+        self.position.x = x
+        self.position.y = y
+
+    def reset(self, x, y):
+        self.lives -= 1
+        self.timeout = PLAYER_TIMEOUT
+        self.update_position(x, y)
+        self.rotation = PLAYER_INITIAL_ROTATION
