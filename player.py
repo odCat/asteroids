@@ -48,10 +48,11 @@ class Player(CircleShape):
 
     def shoot(self):
         unit = pygame.Vector2(0, 1).rotate(self.rotation)
-        apex = self.position + unit * self.radius
+        shot_offset = pygame.Vector2(0, SHOT_LENGTH/2).rotate(self.rotation)
+        shot_center = self.position + unit * self.radius + shot_offset
         velocity = pygame.Vector2(0,1).rotate(self.rotation) * PLAYER_SHOOT_SPEED
 
-        Shot(apex.x, apex.y, velocity)
+        Shot(shot_center.x, shot_center.y, self.rotation, velocity)
 
         self.shot_countdown = PLAYER_SHOOT_COOLDOWN
 

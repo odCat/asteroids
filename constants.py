@@ -13,4 +13,8 @@ PLAYER_SPEED = 300
 PLAYER_SHOOT_SPEED = 500
 PLAYER_SHOOT_COOLDOWN = 0.3
 
-SHOT_RADIUS = 5
+SHOT_LENGTH = 15
+
+# Collision radius needs to be smaller than half
+# otherwise it does not look good
+SHOT_RADIUS = SHOT_LENGTH/3
