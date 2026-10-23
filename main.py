@@ -44,13 +44,13 @@ def main():
 
         for asteroid in asteroids:
             if player.collies_with(asteroid):
+                log_event("player_hit")
+                player.lives -= 1
+                if player.lives == 0:
+                    pygame.quit()
+                    exit("Game Over!")
                 if player.timeout < 0.0:
-                    log_event("player_hit")
-                    if player.lives == 0:
-                        pygame.quit()
-                        exit("Game Over!")
-                    else:
-                        player.reset(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
+                    player.reset(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
                 elif 0.0 <= player.timeout < 1.0:
                     player.timeout += dt
 

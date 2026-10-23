@@ -2,6 +2,7 @@ import pygame
 
 from circleshape import CircleShape
 from constants import *
+from lives import draw_lives
 from shot import Shot
 
 
@@ -15,6 +16,7 @@ class Player(CircleShape):
         self.shot_countdown = 0.0
 
     def draw(self, screen: pygame.Surface) -> None:
+        draw_lives(screen, self.lives)
         pygame.draw.polygon(screen, "white", self.triangle(), LINE_WIDTH)
 
     def triangle(self) -> list[pygame.Vector2]:
@@ -68,7 +70,6 @@ class Player(CircleShape):
         self.position.y = y
 
     def reset(self, x: float, y: float) -> None:
-        self.lives -= 1
         self.timeout = PLAYER_TIMEOUT
         self.update_position(x, y)
         self.rotation = PLAYER_INITIAL_ROTATION
