@@ -30,7 +30,7 @@ class AsteroidField(pygame.sprite.Sprite):
         ],
     ]
 
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(self.containers)
         self.spawn_timer = 0.0
         self.asteroid_no = 0

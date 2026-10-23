@@ -13,7 +13,7 @@ class Shot(CircleShape):
 
     def draw(self, screen: pygame.Surface) -> None:
         offset = pygame.Vector2(0, SHOT_LENGTH/2).rotate(self.rotation)
-        pygame.draw.line(screen, "white", self.position + offset, self.position - offset, 2)
+        pygame.draw.line(screen, "white", self.position + offset, self.position - offset, LINE_WIDTH)
 
     def update(self, dt: float) -> None:
         self.position += self.velocity * dt
