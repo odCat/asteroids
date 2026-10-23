@@ -14,9 +14,18 @@ class Asteroid(CircleShape):
     def __init__(self, x: float, y: float, radius: float, velocity: pygame.Vector2 = pygame.Vector2(0)) -> None:
         super().__init__(x, y, radius)
         self.velocity = velocity
+        vertex_count = random.randint(ASTEROID_MIN_VERTICES, ASTEROID_MAX_VERTICES)
+        self.shape = [
+            pygame.Vector2.from_polar((
+                radius * random.uniform(ASTEROID_SHAPE_JITTER_MIN, ASTEROID_SHAPE_JITTER_MAX),
+                i * 360 / vertex_count,
+            ))
+            for i in range(vertex_count)
+        ]
 
     def draw(self, screen: pygame.Surface) -> None:
-        pygame.draw.circle(screen, "white", self.position, self.radius, LINE_WIDTH)
+        points = [self.position + point for point in self.shape]
+        pygame.draw.polygon(screen, "white", points, LINE_WIDTH)
 
     def update(self, dt: float) -> None:
         self.position += self.velocity * dt
