@@ -30,7 +30,7 @@ class Player(CircleShape):
     def update(self, dt: float) -> None:
         self.shot_countdown -= dt
 
-        if self.timeout > 0:
+        if self.timeout > 0.0:
             return
 
         keys = pygame.key.get_pressed()
