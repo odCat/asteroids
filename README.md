@@ -1,6 +1,6 @@
 # Asteroids
 
-This is clone of the classic Asteroids game build using the Pygame module
+This is clone of the classic Asteroids game build using the _pygame_ module
 and object-oriented programming concepts.
 
 ## Prerequisites
@@ -34,7 +34,6 @@ python main.py
 
 ## TODO
 - [ ] Add edges so objects come back into view when leaving the screen
-- [ ] Make the bullet look like a line
 - [ ] Add lifes
 
 ## Contributing
