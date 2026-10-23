@@ -1,5 +1,6 @@
 import pygame
 from sys import exit
+from logger import log_state
 
 from constants import *
 from asteroid import Asteroid
@@ -12,7 +13,7 @@ def main():
     pygame.init()
     clock = pygame.time.Clock()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-    dt = 0
+    dt = 0.0
 
     asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
@@ -28,6 +29,7 @@ def main():
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
 
     while 1:
+        log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
