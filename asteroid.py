@@ -6,14 +6,15 @@ from constants import *
 
 
 class Asteroid(CircleShape):
-    def __init__(self, x, y, radius, velocity=0):
+
+    def __init__(self, x: float, y: float, radius: float, velocity: pygame.Vector2 = pygame.Vector2(0)) -> None:
         super().__init__(x, y, radius)
         self.velocity = velocity
 
-    def draw(self, screen):
-        pygame.draw.circle(screen, "white", self.position, self.radius, 2)
+    def draw(self, screen: pygame.Surface) -> None:
+        pygame.draw.circle(screen, "white", self.position, self.radius, LINE_WIDTH)
 
-    def update(self, dt):
+    def update(self, dt: float) -> None:
         self.position += self.velocity * dt
 
     def split(self, field):
@@ -25,7 +26,7 @@ class Asteroid(CircleShape):
             new_radius = self.radius - ASTEROID_MIN_RADIUS
 
             velocity = self.velocity.rotate(-angle) * 1.2
-            astro1 = Asteroid(self.position.x, self.position.y, new_radius, velocity)
+            Asteroid(self.position.x, self.position.y, new_radius, velocity)
 
             velocity = self.velocity.rotate(angle) * 1.2
-            astro2 = Asteroid(self.position.x, self.position.y, new_radius, velocity)
+            Asteroid(self.position.x, self.position.y, new_radius, velocity)

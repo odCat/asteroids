@@ -3,8 +3,6 @@ import pygame
 
 class CircleShape(pygame.sprite.Sprite):
 
-    containers: tuple[pygame.sprite.Group, ...]
-
     def __init__(self, x: float, y: float, radius: float) -> None:
         if hasattr(self, "containers"):
             super().__init__(*self.containers)
