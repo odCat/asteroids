@@ -1,6 +1,6 @@
 import pygame
 from sys import exit
-from logger import log_state
+from logger import log_state, log_event
 
 from constants import *
 from asteroid import Asteroid
@@ -43,8 +43,9 @@ def main():
             player.timeout -= dt
 
         for asteroid in asteroids:
-            if player.collided(asteroid):
+            if player.collies_with(asteroid):
                 if player.timeout < 0.0:
+                    log_event("player_hit")
                     if player.lives == 0:
                         pygame.quit()
                         exit("Game Over!")
@@ -53,7 +54,8 @@ def main():
                 elif 0.0 <= player.timeout < 1.0:
                     player.timeout += dt
             for bullet in shots:
-                if bullet.collided(asteroid):
+                if bullet.collies_with(asteroid):
+                    log_event("asteroid_shot")
                     asteroid.split(field)
                     bullet.kill()
 
