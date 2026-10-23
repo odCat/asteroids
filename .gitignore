@@ -3,4 +3,5 @@ __pycache__/
 .idea/
 
 Session.vim
+game_events.jsonl
 game_state.jsonl
