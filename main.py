@@ -53,11 +53,14 @@ def main():
                         player.reset(SCREEN_WIDTH/2, SCREEN_HEIGHT/2)
                 elif 0.0 <= player.timeout < 1.0:
                     player.timeout += dt
-            for bullet in shots:
+
+        for bullet in shots:
+            for asteroid in asteroids:
                 if bullet.collies_with(asteroid):
                     log_event("asteroid_shot")
                     asteroid.split(field)
                     bullet.kill()
+                    break
 
         for thing in drawable:
             thing.draw(screen)
