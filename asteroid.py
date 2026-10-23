@@ -1,6 +1,9 @@
 import pygame
 import random
 
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from asteroidfield import AsteroidField
 from circleshape import CircleShape
 from constants import *
 from logger import log_event
@@ -18,7 +21,7 @@ class Asteroid(CircleShape):
     def update(self, dt: float) -> None:
         self.position += self.velocity * dt
 
-    def split(self, field):
+    def split(self, field: "AsteroidField"):
         self.kill()
         field.asteroid_no -= 1
         if self.radius > ASTEROID_MIN_RADIUS:
