@@ -15,7 +15,7 @@ class Player(CircleShape):
         self.shot_countdown = 0.0
 
     def draw(self, screen: pygame.Surface) -> None:
-        pygame.draw.polygon(screen, "white", self.triangle(), 2)
+        pygame.draw.polygon(screen, "white", self.triangle(), LINE_WIDTH)
 
     def triangle(self) -> list[pygame.Vector2]:
         forward_unit = pygame.Vector2(0, 1).rotate(self.rotation)
