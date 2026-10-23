@@ -47,8 +47,8 @@ class Player(CircleShape):
             self.shoot()
 
     def move(self, dt: float) -> None:
-        unit = pygame.Vector2(0, 1).rotate(self.rotation)
-        self.position += unit * PLAYER_SPEED * dt
+        unit_vector = pygame.Vector2(0, 1).rotate(self.rotation)
+        self.position += unit_vector * PLAYER_SPEED * dt
 
     def rotate(self, dt: float) -> None:
         self.rotation += PLAYER_TURN_SPEED * dt
