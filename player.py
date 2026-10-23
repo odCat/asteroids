@@ -6,17 +6,18 @@ from constants import *
 
 
 class Player(CircleShape):
-    def __init__(self, x, y):
+
+    def __init__(self, x: float, y: float) -> None:
         super().__init__(x, y, PLAYER_RADIUS)
         self.timeout = PLAYER_TIMEOUT
         self.lives = PLAYER_LIVES
         self.rotation = PLAYER_INITIAL_ROTATION
         self.shot_countdown = 0.0
 
-    def draw(self, screen):
+    def draw(self, screen: pygame.Surface) -> None:
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
 
-    def triangle(self):
+    def triangle(self) -> list[pygame.Vector2]:
         forward_unit = pygame.Vector2(0, 1).rotate(self.rotation)
         lateral_unit = pygame.Vector2(0, 1).rotate(self.rotation + 90) * self.radius / 1.5
 
@@ -26,7 +27,7 @@ class Player(CircleShape):
 
         return [apex, left_vertex, right_vertex]
 
-    def update(self, dt):
+    def update(self, dt: float) -> None:
         self.shot_countdown -= dt
 
         if self.timeout > 0:
@@ -45,14 +46,14 @@ class Player(CircleShape):
         if keys[pygame.K_SPACE] and self.shot_countdown <= 0:
             self.shoot()
 
-    def move(self, dt):
+    def move(self, dt: float) -> None:
         unit = pygame.Vector2(0, 1).rotate(self.rotation)
         self.position += unit * PLAYER_SPEED * dt
 
-    def rotate(self, dt):
+    def rotate(self, dt: float) -> None:
         self.rotation += PLAYER_TURN_SPEED * dt
 
-    def shoot(self):
+    def shoot(self) -> None:
         unit = pygame.Vector2(0, 1).rotate(self.rotation)
         shot_offset = pygame.Vector2(0, SHOT_LENGTH/2).rotate(self.rotation)
         shot_center = self.position + unit * self.radius + shot_offset
@@ -62,11 +63,11 @@ class Player(CircleShape):
 
         self.shot_countdown = PLAYER_SHOOT_COOLDOWN
 
-    def update_position(self, x, y):
+    def update_position(self, x: float, y: float) -> None:
         self.position.x = x
         self.position.y = y
 
-    def reset(self, x, y):
+    def reset(self, x: float, y: float) -> None:
         self.lives -= 1
         self.timeout = PLAYER_TIMEOUT
         self.update_position(x, y)
